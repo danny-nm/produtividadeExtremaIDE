@@ -51,7 +51,7 @@ public class Gasto {
 	public void setData(Calendar data) {
 		this.data = data;
 	}
-	
+
 	public boolean isPagoEmDinheiro() {
 		return pagoEmDinheiro;
 	}
@@ -62,7 +62,52 @@ public class Gasto {
 
 	@Override
 	public String toString() {
-		return " valor: " + valor + " , data: " + data.getTime().getDate() +  " , tipo de gasto: " + tipo;
+		return " valor: " + valor + " , data: " + data.getTime().getDate() + " , tipo de gasto: " + tipo;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((data == null) ? 0 : data.hashCode());
+		result = prime * result + ((funcionario == null) ? 0 : funcionario.hashCode());
+		result = prime * result + (pagoEmDinheiro ? 1231 : 1237);
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(valor);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Gasto other = (Gasto) obj;
+		if (data == null) {
+			if (other.data != null)
+				return false;
+		} else if (!data.equals(other.data))
+			return false;
+		if (funcionario == null) {
+			if (other.funcionario != null)
+				return false;
+		} else if (!funcionario.equals(other.funcionario))
+			return false;
+		if (pagoEmDinheiro != other.pagoEmDinheiro)
+			return false;
+		if (tipo == null) {
+			if (other.tipo != null)
+				return false;
+		} else if (!tipo.equals(other.tipo))
+			return false;
+		if (Double.doubleToLongBits(valor) != Double.doubleToLongBits(other.valor))
+			return false;
+		return true;
 	}
 
 }
