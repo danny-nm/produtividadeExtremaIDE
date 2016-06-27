@@ -28,7 +28,7 @@ public class FiltradorDeGastosTest {
 		FiltradorDeGastosEspeciais filtrador = new FiltradorDeGastosEspeciais(25.0);
 		List<Gasto> gastosGrandes = filtrador.filtraGastosGrandes(lista);
 
-		assertEquals(1, gastosGrandes.size());
+		assertEquals(3, gastosGrandes.size());
 		assertEquals(150.0, gastosGrandes.get(0).getValor(), 0.00001);
 
 	}
